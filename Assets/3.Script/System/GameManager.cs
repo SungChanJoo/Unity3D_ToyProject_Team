@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance = null;
+
+    private readonly string _mainGameName = "KYS_Test_MainGame"; // MainGame으로 수정 요구
 
     private void Awake()
     {
@@ -15,23 +18,14 @@ public class GameManager : MonoBehaviour
             Destroy(this);
     }
 
-    private void Update()
-    {
-        // MainGame에 있는 GameOverCanvas gameobject를 참조
-    }
-
     public void StartGame()
     {
-        SceneManager.LoadScene("KYS_Test_Dummy"); // MainGame으로수정 요구
-    }
-
-    public void HandleGameOver()
-    {
-        // MainGame에 있는 GameOverCanvas gameobject를 SetActive(true)해줘야함
+        SceneManager.LoadScene(_mainGameName);
     }
 
     public void Quit()
     {
         Application.Quit();
+        Debug.Log("quit");
     }
 }
