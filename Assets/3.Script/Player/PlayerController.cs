@@ -14,9 +14,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Animator player_ani;
     [SerializeField] private Rigidbody player_rb;
 
-    private float movespeed = 2f;
+    [SerializeField] public float movespeed = 15f;
     private bool isjumping = false;
-    private float jumpforce = 8f;
+    [SerializeField] public float jumpforce = 8f;
 
     private void Awake()
     {
@@ -35,9 +35,9 @@ public class PlayerController : MonoBehaviour
         if(!isjumping)
         {
             float x = Input.GetAxisRaw("Horizontal");
-            Vector3 playerpos = transform.position + new Vector3(x, 0, 0);
+            //Vector3 playerpos = transform.position + new Vector3(x, 0, 0);
 
-            player_rb.MovePosition(playerpos);
+            transform.Translate(new Vector3(x, 0, 0) * movespeed * Time.deltaTime);
         }
     }
 
