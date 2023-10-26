@@ -671,6 +671,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player_ani: {fileID: 0}
   player_rb: {fileID: 0}
+  movespeed: 2
+  jumpforce: 8
 --- !u!1 &3552227711080360343
 GameObject:
   m_ObjectHideFlags: 0
