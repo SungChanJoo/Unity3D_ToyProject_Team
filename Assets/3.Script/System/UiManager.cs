@@ -15,6 +15,7 @@ public class UiManager : MonoBehaviour
     private float _startTime;
 
     private int _curScore = -1;
+    private int _coinScore = 0;
 
     private bool _isGameOver = false;
 
@@ -22,8 +23,13 @@ public class UiManager : MonoBehaviour
     {
         if (_isGameOver) return;
 
-        _curScore = (int)(Time.time - _startTime);
+        _curScore = (int)(Time.time - _startTime) + _coinScore;
         _scoreTxt.text = _curScore.ToString();
+    }
+
+    public void AddCoinScore(int count)
+    {
+        _coinScore += count;
     }
 
     public void OnEnable()
