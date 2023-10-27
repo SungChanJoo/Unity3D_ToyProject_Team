@@ -14,15 +14,17 @@ public class ObjectSpawner : MonoBehaviour
     private Queue<GameObject> object_queue;
 
     [Header("생성 위치")]
-    [SerializeField] private float pos_y= 0.5f;
-    [SerializeField] private float pos_z= 30f;
+    [SerializeField] private float pos_x = 0.0f;
+    [SerializeField] private float pos_y = 0.5f;
+    [SerializeField] private float pos_z = 30f;
+    [SerializeField] private float range = 2.5f;
 
 
     private void Awake()
     {
         object_queue = new Queue<GameObject>();
 
-        for(int i = 0; i<object_count; i++)
+        for (int i = 0; i < object_count; i++)
         {
             GameObject ob = Instantiate(object_prefabs[0], pool_position, Quaternion.identity);
             ob.SetActive(false);
@@ -34,7 +36,7 @@ public class ObjectSpawner : MonoBehaviour
     public void TakeInObject(GameObject ob)
     {
         ob.transform.position = pool_position;
-        if(ob.activeSelf)
+        if (ob.activeSelf)
         {
             ob.SetActive(false);
         }
@@ -43,12 +45,12 @@ public class ObjectSpawner : MonoBehaviour
 
     public void TakeOutObject(Vector3 position)
     {
-        if(object_count<0)
+        if (object_count < 0)
         {
             return;
         }
         GameObject ob = object_queue.Dequeue();
-        if(!ob.activeSelf)
+        if (!ob.activeSelf)
         {
             ob.SetActive(true);
         }
@@ -59,9 +61,9 @@ public class ObjectSpawner : MonoBehaviour
     {
         WaitForSeconds wfs = new WaitForSeconds(spawn_time);
 
-        while(true)
+        while (true)
         {
-            float position_x = Random.Range(0, 5f);
+            float position_x = Random.Range(pos_x - range, pos_x + range);
             Vector3 position = new Vector3(position_x, pos_y, pos_z);
             TakeOutObject(position);
             yield return wfs;
