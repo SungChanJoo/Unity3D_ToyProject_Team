@@ -8,7 +8,6 @@ public class PlayerController : MonoBehaviour
      플레이어 조작하는 스크립트
      맵이 스크롤링하므로 플레이어는 좌우만 움직이도록 할 것임
      Rigidbody, Collider, Animator 컴포넌트 추가
-     
      */
 
     [SerializeField] private Animator player_ani;
@@ -18,10 +17,14 @@ public class PlayerController : MonoBehaviour
     private bool isjumping = false;
     [SerializeField] public float jumpforce = 8f;
 
+    //UIManager 참조함
+    private UiManager uimanager;
+
     private void Awake()
     {
         player_ani = GetComponent<Animator>();
         player_rb = GetComponent<Rigidbody>();
+        uimanager = FindObjectOfType<UiManager>();
     }
 
     private void Update()
@@ -59,6 +62,17 @@ public class PlayerController : MonoBehaviour
             isjumping = false;
             player_ani.SetBool("isJump", false);
         }
+
+        if(col.gameObject.CompareTag("Object"))
+        {
+            Die();
+        }
+    }
+
+    private void Die()
+    {
+        Destroy(this.gameObject);
+        uimanager.HandleGameOver();
     }
 
 }
