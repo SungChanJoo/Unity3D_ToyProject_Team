@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class UiManager : MonoBehaviour
 {
+    // TODO : 버튼 클릭 사운드 에러남.
 
     [SerializeField] private GameObject _gameOverUi;
 
