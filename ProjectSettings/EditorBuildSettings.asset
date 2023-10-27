@@ -6,22 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-<<<<<<< Updated upstream
     path: Assets/1.Scene/release v 0.2/MainMenu.unity
     guid: 3ab78d476a6cd9f4fabf23c0d87d73f1
-  - enabled: 0
-    path: Assets/1.Scene/release v 0.2/KYS_Test_MainGame.unity
-    guid: 4d9e6abf6d1eab04a91b3a8efca9422e
   - enabled: 1
     path: Assets/1.Scene/release v 0.2/MainGame.unity
-=======
-    path: Assets/1.Scene/release_v0.2/MainMenu.unity
-    guid: 3ab78d476a6cd9f4fabf23c0d87d73f1
-  - enabled: 1
-    path: Assets/1.Scene/release_v0.2/KYS_Test_MainGame.unity
-    guid: 4d9e6abf6d1eab04a91b3a8efca9422e
-  - enabled: 1
-    path: Assets/1.Scene/release_v0.2/MainGame.unity
->>>>>>> Stashed changes
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+    guid: fba4002311952554b8ebf4412b0be5a7
   m_configObjects: {}
