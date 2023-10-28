@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class UiManager : MonoBehaviour
 {
-    // TODO : 버튼 클릭 사운드 에러남.
-
     [SerializeField] private GameObject _gameOverUi;
 
     [SerializeField] private TextMeshProUGUI _scoreTxt;
@@ -41,6 +39,7 @@ public class UiManager : MonoBehaviour
 
     public void OnEnable()
     {
+        //PlayerPrefs.DeleteAll();
         _audioSource.PlayOneShot(_gameStartClip);
 
         _startTime = Time.time;
@@ -94,7 +93,8 @@ public class UiManager : MonoBehaviour
             }
         }
 
-        if(rankingScores.Count < _rankingScoreTxts.Count)
+        if(rankingScores.Count < _rankingScoreTxts.Count
+            && !isCurScoreStored)
             PlayerPrefs.SetInt($"RankingScore{rankingScores.Count}", _curScore);
 
     }
@@ -111,7 +111,7 @@ public class UiManager : MonoBehaviour
     {
         List<int> scores = new List<int>();
 
-        for(int i =0; i < 3; i++)
+        for(int i =0; i < _rankingScoreTxts.Count; i++)
         {
             int score = PlayerPrefs.GetInt($"RankingScore{i}", -1);
 
