@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 5684719995537124283}
   m_Layer: 2
   m_Name: Star
-  m_TagString: Untagged
+  m_TagString: Invincibility
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
