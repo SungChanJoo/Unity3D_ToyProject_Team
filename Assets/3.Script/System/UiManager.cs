@@ -5,8 +5,6 @@ using UnityEngine;
 
 public class UiManager : MonoBehaviour
 {
-    // TODO : 버튼 클릭 사운드 에러남.
-
     [SerializeField] private GameObject _gameOverUi;
 
     [SerializeField] private TextMeshProUGUI _scoreTxt;
@@ -90,13 +88,15 @@ public class UiManager : MonoBehaviour
                 PlayerPrefs.SetInt($"RankingScore{i}", _curScore);
 
                 isCurScoreStored = true;
-                i--;
             }
         }
 
-        if(rankingScores.Count < _rankingScoreTxts.Count)
-            PlayerPrefs.SetInt($"RankingScore{rankingScores.Count}", _curScore);
+        if (rankingScores.Count < _rankingScoreTxts.Count)
+            PlayerPrefs.SetInt($"RankingScore{rankingScores.Count}", isCurScoreStored ? temp : _curScore);
 
+        //if (rankingScores.Count < _rankingScoreTxts.Count
+        //    && !isCurScoreStored)
+        //    PlayerPrefs.SetInt($"RankingScore{rankingScores.Count}", _curScore);
     }
 
     private void ShowScoreRanking()
@@ -111,7 +111,7 @@ public class UiManager : MonoBehaviour
     {
         List<int> scores = new List<int>();
 
-        for(int i =0; i < 3; i++)
+        for(int i =0; i < _rankingScoreTxts.Count; i++)
         {
             int score = PlayerPrefs.GetInt($"RankingScore{i}", -1);
 
