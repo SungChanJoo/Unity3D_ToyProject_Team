@@ -42,7 +42,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if(!isdead)
+        if (!isdead)
         {
             PlayerMove();
             PlayerJump();
@@ -51,7 +51,7 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerMove()
     {
-        if(!isjumping)
+        if (!isjumping)
         {
             float x = Input.GetAxisRaw("Horizontal");
 
@@ -59,20 +59,20 @@ public class PlayerController : MonoBehaviour
 
             //걷는 사운드
             walksoundaccumulatetime += Time.deltaTime;
-            if(walksoundaccumulatetime > walksoundtime)
+            if (walksoundaccumulatetime > walksoundtime)
             {
                 Debug.Log(walksoundaccumulatetime);
                 walksoundaccumulatetime = 0f;
                 PlaySound(0);
             }
-            
+
         }
-        
+
     }
 
     private void PlayerJump()
     {
-        if(Input.GetKeyDown(KeyCode.Space) && !isjumping)
+        if (Input.GetKeyDown(KeyCode.Space) && !isjumping)
         {
             //StartCoroutine(PlayerJump_co());
             isjumping = true;
@@ -86,15 +86,15 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision col)
     {
-        if(col.gameObject.CompareTag("Ground"))
+        if (col.gameObject.CompareTag("Ground"))
         {
             isjumping = false;
             player_ani.SetBool("isJump", false);
         }
 
-        if(col.gameObject.CompareTag("Object"))
+        if (col.gameObject.CompareTag("Object"))
         {
-            if(!isinvincible)
+            if (!isinvincible)
             {
                 Die();
             }
@@ -107,7 +107,7 @@ public class PlayerController : MonoBehaviour
         //아이템
         if (col.gameObject.CompareTag("Item"))
         {
-            if(col.gameObject.name == "Invincibility") // 무적
+            if (col.gameObject.name == "Invincibility") // 무적
             {
                 // 3초간 무적
                 isinvincible = true;
@@ -115,10 +115,10 @@ public class PlayerController : MonoBehaviour
                 Invoke("ChangeInvincibility", 3f);
             }
 
-            if(col.gameObject.name == "Coin") // 코인
+            if (col.gameObject.name == "Coin") // 코인
             {
                 //점수 추가
-                
+
             }
         }
     }
