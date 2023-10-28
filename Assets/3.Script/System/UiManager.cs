@@ -13,6 +13,12 @@ public class UiManager : MonoBehaviour
 
     [SerializeField] private List<TextMeshProUGUI> _rankingScoreTxts;
 
+    [SerializeField] private AudioSource _audioSource;
+
+    //[SerializeField] private AudioClip _mainClip;
+    [SerializeField] private AudioClip _gameOverClip;
+    [SerializeField] private AudioClip _gameStartClip;
+
     private float _startTime;
 
     private int _curScore = -1;
@@ -35,12 +41,17 @@ public class UiManager : MonoBehaviour
 
     public void OnEnable()
     {
+        _audioSource.PlayOneShot(_gameStartClip);
+
         _startTime = Time.time;
         _gameOverUi.SetActive(false);
     }
 
     public void HandleGameOver()
     {
+        _audioSource.Stop();
+        _audioSource.PlayOneShot(_gameOverClip);
+
         _gameOverUi.SetActive(true);
         _isGameOver = true;
 
