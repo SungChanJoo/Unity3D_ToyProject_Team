@@ -102,8 +102,6 @@ public class PlayerController : MonoBehaviour
             {
                 return;
             }
-            
-            
         }
 
         //아이템
@@ -120,6 +118,7 @@ public class PlayerController : MonoBehaviour
             if(col.gameObject.name == "Coin") // 코인
             {
                 //점수 추가
+                
             }
         }
     }
