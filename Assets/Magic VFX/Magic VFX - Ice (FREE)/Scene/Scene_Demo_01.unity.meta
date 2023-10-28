@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/ETC.meta
+guid: 9eb1ecc46678d8a4ba5b3989e37e7556
+folderAsset: yes
+========
 guid: 27e13b5b03cae014997cd804e937f846
+>>>>>>>> origin/Develop:Assets/Magic VFX/Magic VFX - Ice (FREE)/Scene/Scene_Demo_01.unity.meta
 DefaultImporter:
   externalObjects: {}
   userData: 
