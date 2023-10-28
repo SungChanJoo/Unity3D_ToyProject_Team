@@ -96,7 +96,6 @@ public class UiManager : MonoBehaviour
         if(rankingScores.Count < _rankingScoreTxts.Count
             && !isCurScoreStored)
             PlayerPrefs.SetInt($"RankingScore{rankingScores.Count}", _curScore);
-
     }
 
     private void ShowScoreRanking()
