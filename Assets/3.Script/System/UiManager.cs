@@ -39,7 +39,6 @@ public class UiManager : MonoBehaviour
 
     public void OnEnable()
     {
-        //PlayerPrefs.DeleteAll();
         _audioSource.PlayOneShot(_gameStartClip);
 
         _startTime = Time.time;
@@ -89,14 +88,15 @@ public class UiManager : MonoBehaviour
                 PlayerPrefs.SetInt($"RankingScore{i}", _curScore);
 
                 isCurScoreStored = true;
-                i--;
             }
         }
 
-        if(rankingScores.Count < _rankingScoreTxts.Count
-            && !isCurScoreStored)
-            PlayerPrefs.SetInt($"RankingScore{rankingScores.Count}", _curScore);
+        if (rankingScores.Count < _rankingScoreTxts.Count)
+            PlayerPrefs.SetInt($"RankingScore{rankingScores.Count}", isCurScoreStored ? temp : _curScore);
 
+        //if (rankingScores.Count < _rankingScoreTxts.Count
+        //    && !isCurScoreStored)
+        //    PlayerPrefs.SetInt($"RankingScore{rankingScores.Count}", _curScore);
     }
 
     private void ShowScoreRanking()
