@@ -146,9 +146,9 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerRayToGround()
     {
-        Debug.DrawRay(transform.position, Vector3.down * 0.4f, Color.red);
+        Debug.DrawRay(transform.position, Vector3.down * 0.1f, Color.red);
         RaycastHit hit;
-        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.4f))
+        if (Physics.Raycast(transform.position, Vector3.down, out hit, 0.1f))
         {
             if (hit.transform.gameObject.CompareTag("Ground"))
             {
