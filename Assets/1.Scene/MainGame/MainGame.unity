@@ -512,7 +512,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1.69, z: 1}
-  m_Center: {x: 0, y: 0.86, z: 0}
+  m_Center: {x: 0, y: 0.81, z: 0}
 --- !u!54 &8377171
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -526,9 +526,9 @@ Rigidbody:
   m_AngularDrag: 0.05
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!95 &8377172
 Animator:
   serializedVersion: 3
@@ -564,6 +564,9 @@ MonoBehaviour:
   player_rb: {fileID: 0}
   movespeed: 15
   jumpforce: 8
+  isjumping: 0
+  player_limitleft: -4.6
+  player_limitright: 3.5
   isinvincible: 0
   player_audiosource: {fileID: 0}
   player_clips:
@@ -1589,7 +1592,7 @@ GameObject:
   - component: {fileID: 125289323}
   m_Layer: 0
   m_Name: MapTile 6
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -16526,7 +16529,7 @@ GameObject:
   - component: {fileID: 1084033142}
   m_Layer: 0
   m_Name: MapTile 2
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -19740,7 +19743,7 @@ GameObject:
   - component: {fileID: 1367904604}
   m_Layer: 0
   m_Name: MapTile 3
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20457,7 +20460,7 @@ GameObject:
   - component: {fileID: 1417163829}
   m_Layer: 0
   m_Name: MapTile 5
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23068,7 +23071,7 @@ GameObject:
   - component: {fileID: 1541252291}
   m_Layer: 0
   m_Name: MapTile
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30766,7 +30769,7 @@ GameObject:
   - component: {fileID: 1939713353}
   m_Layer: 0
   m_Name: MapTile 4
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
