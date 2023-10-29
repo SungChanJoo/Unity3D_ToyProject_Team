@@ -10,7 +10,8 @@ public class UiManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _scoreTxt;
 
     [SerializeField] private List<TextMeshProUGUI> _rankingScoreTxts;
-
+    [SerializeField] private List<TextMeshProUGUI> _rankingNameTxts;
+    
     [SerializeField] private AudioSource _audioSource;
 
     //[SerializeField] private AudioClip _mainClip;
@@ -59,6 +60,9 @@ public class UiManager : MonoBehaviour
 
         _rankingNameInput.SetActive(false);
         _rankingResult.SetActive(true);
+
+        UpdateScoreRanking();
+        ShowScoreRanking();
     }
 
     public void HandleGameOver()
@@ -68,47 +72,54 @@ public class UiManager : MonoBehaviour
 
         _gameOverUi.SetActive(true);
         _isGameOver = true;
-
-        UpdateScoreRanking();
-        ShowScoreRanking();
     }
 
     private void UpdateScoreRanking()
     {
-        List<int> rankingScores = FetchScoreHistory();
+        List<Tuple<int, string>> rankingInfo = FetchRankingHistory();
 
-        if (rankingScores.Count.Equals(0))
+        if (rankingInfo.Count.Equals(0))
         {
             // RankingScore0에 0이 붙음에 주의
             PlayerPrefs.SetInt($"RankingScore0", _curScore);
+            PlayerPrefs.SetString($"RankingName0", _nameTxt.text);
             return;
         }
 
         bool isCurScoreStored = false;
 
-        int temp = -1;
+        int tempScore = -1;
+        string tempName = string.Empty;
 
-        for (int i = 0; i < rankingScores.Count; i++)
+        for (int i = 0; i < rankingInfo.Count; i++)
         {
             if (isCurScoreStored)
             {
-                PlayerPrefs.SetInt($"RankingScore{i}", temp);
-                temp = rankingScores[i];
+                PlayerPrefs.SetInt($"RankingScore{i}", tempScore);
+                tempScore = rankingInfo[i].Item1;
+
+                PlayerPrefs.SetString($"RankingName{i}", tempName);
+                tempName = rankingInfo[i].Item2;
 
                 continue;
             }
 
-            if (_curScore > rankingScores[i])
+            if (_curScore > rankingInfo[i].Item1)
             {
-                temp = rankingScores[i];
+                tempScore = rankingInfo[i].Item1;
+                tempName = rankingInfo[i].Item2;
                 PlayerPrefs.SetInt($"RankingScore{i}", _curScore);
+                PlayerPrefs.SetString($"RankingName{i}", _nameTxt.text);
 
                 isCurScoreStored = true;
             }
         }
 
-        if (rankingScores.Count < _rankingScoreTxts.Count)
-            PlayerPrefs.SetInt($"RankingScore{rankingScores.Count}", isCurScoreStored ? temp : _curScore);
+        if (rankingInfo.Count < _rankingScoreTxts.Count)
+        {
+            PlayerPrefs.SetInt($"RankingScore{rankingInfo.Count}", isCurScoreStored ? tempScore : _curScore);
+            PlayerPrefs.SetString($"RankingName{rankingInfo.Count}", isCurScoreStored ? tempName : _nameTxt.text);
+        }
 
         //if (rankingScores.Count < _rankingScoreTxts.Count
         //    && !isCurScoreStored)
@@ -117,26 +128,30 @@ public class UiManager : MonoBehaviour
 
     private void ShowScoreRanking()
     {
-        List<int> scores = FetchScoreHistory();
+        List<Tuple<int, string>> rankingInfo = FetchRankingHistory();
 
-        for (int i = 0; i < scores.Count; i++)
-            _rankingScoreTxts[i].text = scores[i].ToString();
+        for (int i = 0; i < rankingInfo.Count; i++)
+        {
+            _rankingScoreTxts[i].text = rankingInfo[i].Item1.ToString();
+            _rankingNameTxts[i].text = rankingInfo[i].Item2;
+        }
     }
 
-    private List<int> FetchScoreHistory()
+    private List<Tuple<int, string>> FetchRankingHistory()
     {
-        List<int> scores = new List<int>();
+        List<Tuple<int, string>> rankingInfo = new List<Tuple<int, string>>();
 
         for(int i =0; i < _rankingScoreTxts.Count; i++)
         {
             int score = PlayerPrefs.GetInt($"RankingScore{i}", -1);
+            string name = PlayerPrefs.GetString($"RankingName{i}", string.Empty);
 
             // 랭킹 점수가 더는 존재하지 않음
             if (score.Equals(-1)) break;
 
-            scores.Add(score);
+            rankingInfo.Add(new Tuple<int, string>(score, name));
         }
 
-        return scores;
+        return rankingInfo;
     }
 }
