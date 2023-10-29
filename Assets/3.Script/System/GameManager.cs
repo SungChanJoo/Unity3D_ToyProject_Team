@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance = null;
 
     private readonly string _mainGameName = "MainGame"; // MainGame으로 수정 요구
+    //private readonly string _mainGameName = "MainGame"; // MainGame으로 수정 요구
 
     private void Awake()
     {
