@@ -17,6 +17,8 @@ public class MoveBall : MonoBehaviour
     private float size_up = 0;
     private float size_max = 3;
 
+
+
     ObjectSpawner objectSpawner;
 
     private void Awake()
@@ -39,6 +41,9 @@ public class MoveBall : MonoBehaviour
     private void Update()
     {
         lerpTime += Time.deltaTime * speed;
+
+        
+
 
         Ball_size();
 
@@ -92,9 +97,13 @@ public class MoveBall : MonoBehaviour
 
             float Y;        
            
-            if (sizeRan > 0.0004f && speedRan < 3)
+            if (sizeRan > 0.0003f && sizeRan<0.0006f && speedRan < 3)
             {
                 Y = transform.position.y + (sizeRan - 0.00012f);
+            }
+            else if (sizeRan<=0.0005f && speedRan<3)
+            {
+                Y = transform.position.y + (sizeRan - 0.00017f);
             }
             else
             {

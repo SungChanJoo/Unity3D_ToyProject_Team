@@ -13,11 +13,11 @@ public class ObjectSpawner : MonoBehaviour
     private Vector3 pool_position = new Vector3(0, -25f, 0);
     private Queue<GameObject> object_queue;
 
-    [Header("积己 困摹")]
-    [SerializeField] private float pos_x = 0.0f;
-    [SerializeField] private float pos_y = 0.5f;
-    [SerializeField] private float pos_z = 30f;
-    [SerializeField] private float range = 2.5f;
+    //[Header("积己 困摹")]
+    //[SerializeField] private float pos_x = 0.0f;
+    //[SerializeField] private float pos_y = 0.5f;
+    //[SerializeField] private float pos_z = 30f;
+    //[SerializeField] private float range = 2.5f;
 
 
     GameObject ob;
