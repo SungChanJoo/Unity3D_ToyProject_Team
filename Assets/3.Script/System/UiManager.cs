@@ -29,7 +29,7 @@ public class UiManager : MonoBehaviour
         if (_isGameOver) return;
 
         _curScore = (int)(Time.time - _startTime) + _coinScore;
-        _scoreTxt.text = _curScore.ToString();
+        _scoreTxt.text = $"Score : {_curScore}";
     }
 
     public void AddCoinScore(int count)
