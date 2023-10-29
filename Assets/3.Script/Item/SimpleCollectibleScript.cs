@@ -17,13 +17,21 @@ public class SimpleCollectibleScript : MonoBehaviour {
 
 	public GameObject collectEffect;
 
-	
-	void Start () {
-		
+	ObjectSpawner objectSpawner;
+
+	private Vector3 spawnStart;
+	private Vector3 This_ob;
+
+	void Start () 
+	{
+		objectSpawner = FindObjectOfType<ObjectSpawner>();
+		This_ob = transform.localScale;
+		spawnStart = transform.position;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 
 		if (rotate)
 			transform.Rotate (Vector3.up * rotationSpeed * Time.deltaTime, Space.World);
@@ -46,20 +54,31 @@ public class SimpleCollectibleScript : MonoBehaviour {
 
 		
 
-		if (CollectibleType == CollectibleTypes.NoType) {
+		if (CollectibleType == CollectibleTypes.NoType) 
+		{
 
 			//Add in code here;
 
 			Debug.Log ("Do NoType Command");
 		}
-		if (CollectibleType == CollectibleTypes.Type1) {
+		if (CollectibleType == CollectibleTypes.Type1) 
+		{
 
 			//Add in code here;
 
 			Debug.Log ("Do NoType Command");
 		}
+
+		TakeIn();
+
 		
-
-		Destroy (gameObject);
+	}
+	private void TakeIn()
+	{
+		
+			objectSpawner.TakeInObject(this.gameObject);
+			transform.position = spawnStart;
+			transform.localScale = This_ob;
+		
 	}
 }

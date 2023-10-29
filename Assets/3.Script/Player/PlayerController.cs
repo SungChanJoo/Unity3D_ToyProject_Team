@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
             walksoundaccumulatetime += Time.deltaTime;
             if (walksoundaccumulatetime > walksoundtime)
             {
-                Debug.Log(walksoundaccumulatetime);
+                //Debug.Log(walksoundaccumulatetime);
                 walksoundaccumulatetime = 0f;
                 PlaySound(0);
             }
@@ -94,6 +94,7 @@ public class PlayerController : MonoBehaviour
 
         if (col.gameObject.CompareTag("Object"))
         {
+            Debug.Log("Ãæµ¹");
             if (!isinvincible)
             {
                 Die();

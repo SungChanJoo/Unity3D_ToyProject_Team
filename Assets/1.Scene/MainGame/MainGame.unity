@@ -495,7 +495,7 @@ GameObject:
   - component: {fileID: 8377175}
   m_Layer: 0
   m_Name: Player_Penguin
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7643,10 +7643,6 @@ MonoBehaviour:
   - {fileID: 9144424666852672540, guid: 5baac5d1d021a144883e4fd95f393369, type: 3}
   - {fileID: 3546898689862147406, guid: 69da91dc3f46e704bbb4daa7655912bd, type: 3}
   spawn_time: 2
-  pos_x: 0
-  pos_y: 0.5
-  pos_z: 30
-  range: 2.5
 --- !u!1 &481741251
 GameObject:
   m_ObjectHideFlags: 0
@@ -22898,10 +22894,6 @@ MonoBehaviour:
   - {fileID: 4169899592201924485, guid: 43cebe0a31f03fd4c8feb98446480e93, type: 3}
   - {fileID: 1193081691509198810, guid: edc2c93158606224f99492f259a3f11f, type: 3}
   spawn_time: 5
-  pos_x: 0
-  pos_y: 0.5
-  pos_z: 30
-  range: 2.5
 --- !u!1 &1523970571
 GameObject:
   m_ObjectHideFlags: 0
