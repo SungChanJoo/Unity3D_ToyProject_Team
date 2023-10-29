@@ -17,6 +17,12 @@ public class UiManager : MonoBehaviour
     [SerializeField] private AudioClip _gameOverClip;
     [SerializeField] private AudioClip _gameStartClip;
 
+    [SerializeField] private TextMeshProUGUI _nameTxt;
+
+    [SerializeField] private GameObject _rankingNameInput;
+    [SerializeField] private GameObject _rankingResult;
+
+
     private float _startTime;
 
     private int _curScore = -1;
@@ -43,6 +49,16 @@ public class UiManager : MonoBehaviour
 
         _startTime = Time.time;
         _gameOverUi.SetActive(false);
+        _rankingNameInput.SetActive(true);
+        _rankingResult.SetActive(false);
+    }
+
+    public void EnterUserName()
+    {
+        if (_nameTxt.text.Length <= 1) return;
+
+        _rankingNameInput.SetActive(false);
+        _rankingResult.SetActive(true);
     }
 
     public void HandleGameOver()
