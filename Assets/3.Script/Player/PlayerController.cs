@@ -140,6 +140,7 @@ public class PlayerController : MonoBehaviour
                 //점수 추가
                 coin_count++;
                 uimanager.AddCoinScore(coin_count * 10);
+                coin_count = 0;
             }
         }
     }
